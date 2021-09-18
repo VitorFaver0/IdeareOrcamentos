@@ -23,7 +23,7 @@ namespace IdeareOrcamentos
         public Master()
         {
             InitializeComponent();
-            this.materiaisRepository = new MateriaisRepository(new Data.DataContext());
+            this.materiaisRepository = new MaterialRepository(new Data.DataContext());
 
             // Params
             this.Padding = new Padding(borderSize); //Tamanho da borda
@@ -42,7 +42,14 @@ namespace IdeareOrcamentos
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+        protected override void OnShown(EventArgs e)
+        {
+            HomeForm homeForm = new HomeForm(this.panelDesktop) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            this.panelDesktop.Controls.Add(homeForm);
+            homeForm.Show();
 
+            base.OnShown(e);
+        }
         private void Materiais_Click(object sender, EventArgs e)
         {
             this.Tittle.Text = "Materiais";
@@ -51,5 +58,24 @@ namespace IdeareOrcamentos
             this.panelDesktop.Controls.Add(materiaisForm);
             materiaisForm.Show();
         }
+
+        private void Orcamentos_Click(object sender, EventArgs e)
+        {
+            this.Tittle.Text = "Orçamentos";
+            this.panelDesktop.Controls.Clear();
+            OrcamentosForm orcamentosForm = new OrcamentosForm(this.panelDesktop) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            this.panelDesktop.Controls.Add(orcamentosForm);
+            orcamentosForm.Show();
+        }
+
+        private void Home_Click(object sender, EventArgs e)
+        {
+            this.Tittle.Text = "Home";
+            this.panelDesktop.Controls.Clear();
+            HomeForm homeForm = new HomeForm(this.panelDesktop) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            this.panelDesktop.Controls.Add(homeForm);
+            homeForm.Show();
+        }
     }
+    
 }

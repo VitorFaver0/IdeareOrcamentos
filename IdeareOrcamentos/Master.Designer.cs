@@ -31,18 +31,18 @@ namespace IdeareOrcamentos
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Master));
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.Materiais = new FontAwesome.Sharp.IconButton();
-            this.Orcamentos = new FontAwesome.Sharp.IconButton();
-            this.Home = new FontAwesome.Sharp.IconButton();
             this.panelLogo = new System.Windows.Forms.Panel();
-            this.pictureLogo = new System.Windows.Forms.PictureBox();
             this.panelTitle = new System.Windows.Forms.Panel();
             this.Tittle = new System.Windows.Forms.Label();
             this.panelDesktop = new System.Windows.Forms.Panel();
+            this.Materiais = new FontAwesome.Sharp.IconButton();
+            this.Orcamentos = new FontAwesome.Sharp.IconButton();
+            this.Home = new FontAwesome.Sharp.IconButton();
+            this.pictureLogo = new System.Windows.Forms.PictureBox();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
             this.panelTitle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -57,6 +57,46 @@ namespace IdeareOrcamentos
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(230, 594);
             this.panelMenu.TabIndex = 0;
+            // 
+            // panelLogo
+            // 
+            this.panelLogo.Controls.Add(this.pictureLogo);
+            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelLogo.Location = new System.Drawing.Point(0, 0);
+            this.panelLogo.Name = "panelLogo";
+            this.panelLogo.Size = new System.Drawing.Size(230, 100);
+            this.panelLogo.TabIndex = 0;
+            // 
+            // panelTitle
+            // 
+            this.panelTitle.BackColor = System.Drawing.Color.Turquoise;
+            this.panelTitle.Controls.Add(this.Tittle);
+            this.panelTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTitle.Location = new System.Drawing.Point(230, 0);
+            this.panelTitle.Name = "panelTitle";
+            this.panelTitle.Size = new System.Drawing.Size(893, 70);
+            this.panelTitle.TabIndex = 1;
+            this.panelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitle_MouseDown);
+            // 
+            // Tittle
+            // 
+            this.Tittle.AutoSize = true;
+            this.Tittle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tittle.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.Tittle.Location = new System.Drawing.Point(17, 25);
+            this.Tittle.Name = "Tittle";
+            this.Tittle.Size = new System.Drawing.Size(72, 25);
+            this.Tittle.TabIndex = 0;
+            this.Tittle.Text = "Home";
+            this.Tittle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panelDesktop
+            // 
+            this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDesktop.Location = new System.Drawing.Point(230, 70);
+            this.panelDesktop.Name = "panelDesktop";
+            this.panelDesktop.Size = new System.Drawing.Size(893, 524);
+            this.panelDesktop.TabIndex = 2;
             // 
             // Materiais
             // 
@@ -98,6 +138,7 @@ namespace IdeareOrcamentos
             this.Orcamentos.Text = "Orçamentos";
             this.Orcamentos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Orcamentos.UseVisualStyleBackColor = true;
+            this.Orcamentos.Click += new System.EventHandler(this.Orcamentos_Click);
             // 
             // Home
             // 
@@ -118,15 +159,7 @@ namespace IdeareOrcamentos
             this.Home.Text = "Home";
             this.Home.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Home.UseVisualStyleBackColor = true;
-            // 
-            // panelLogo
-            // 
-            this.panelLogo.Controls.Add(this.pictureLogo);
-            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLogo.Location = new System.Drawing.Point(0, 0);
-            this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(230, 100);
-            this.panelLogo.TabIndex = 0;
+            this.Home.Click += new System.EventHandler(this.Home_Click);
             // 
             // pictureLogo
             // 
@@ -137,37 +170,6 @@ namespace IdeareOrcamentos
             this.pictureLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureLogo.TabIndex = 0;
             this.pictureLogo.TabStop = false;
-            // 
-            // panelTitle
-            // 
-            this.panelTitle.BackColor = System.Drawing.Color.Turquoise;
-            this.panelTitle.Controls.Add(this.Tittle);
-            this.panelTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTitle.Location = new System.Drawing.Point(230, 0);
-            this.panelTitle.Name = "panelTitle";
-            this.panelTitle.Size = new System.Drawing.Size(893, 70);
-            this.panelTitle.TabIndex = 1;
-            this.panelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitle_MouseDown);
-            // 
-            // Tittle
-            // 
-            this.Tittle.AutoSize = true;
-            this.Tittle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Tittle.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.Tittle.Location = new System.Drawing.Point(17, 25);
-            this.Tittle.Name = "Tittle";
-            this.Tittle.Size = new System.Drawing.Size(72, 25);
-            this.Tittle.TabIndex = 0;
-            this.Tittle.Text = "Home";
-            this.Tittle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panelDesktop
-            // 
-            this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktop.Location = new System.Drawing.Point(230, 70);
-            this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(893, 524);
-            this.panelDesktop.TabIndex = 2;
             // 
             // Master
             // 
@@ -183,9 +185,9 @@ namespace IdeareOrcamentos
             this.panelMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
             this.panelLogo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
             this.panelTitle.ResumeLayout(false);
             this.panelTitle.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
             this.ResumeLayout(false);
 
         }

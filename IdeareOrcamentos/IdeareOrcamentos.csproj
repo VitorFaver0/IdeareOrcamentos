@@ -72,6 +72,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -84,17 +85,41 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\DataContext.cs" />
+    <Compile Include="Forms\HomeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HomeForm.Designer.cs">
+      <DependentUpon>HomeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MateriaisForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\MateriaisForm.Designer.cs">
       <DependentUpon>MateriaisForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\NovoClienteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NovoClienteForm.Designer.cs">
+      <DependentUpon>NovoClienteForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\NovoMaterialForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\NovoMaterialForm.Designer.cs">
       <DependentUpon>NovoMaterialForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NovoOrcamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NovoOrcamento.Designer.cs">
+      <DependentUpon>NovoOrcamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\OrcamentosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OrcamentosForm.Designer.cs">
+      <DependentUpon>OrcamentosForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Master.cs">
       <SubType>Form</SubType>
@@ -110,16 +135,38 @@
     <Compile Include="Migrations\202109160115434_material.designer.cs">
       <DependentUpon>202109160115434_material.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109182007158_180921.cs" />
+    <Compile Include="Migrations\202109182007158_180921.designer.cs">
+      <DependentUpon>202109182007158_180921.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Materials.cs" />
+    <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\ListaMateriaisOrcamento.cs" />
+    <Compile Include="Models\Material.cs" />
+    <Compile Include="Models\Orcamento.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\MateriaisRepository.cs" />
+    <Compile Include="Repositories\ClienteRepository.cs" />
+    <Compile Include="Repositories\ListaMateriaisOrcamentoRepository.cs" />
+    <Compile Include="Repositories\MaterialRepository.cs" />
+    <Compile Include="Repositories\OrcamentoRepository.cs" />
+    <EmbeddedResource Include="Forms\HomeForm.resx">
+      <DependentUpon>HomeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MateriaisForm.resx">
       <DependentUpon>MateriaisForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NovoClienteForm.resx">
+      <DependentUpon>NovoClienteForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\NovoMaterialForm.resx">
       <DependentUpon>NovoMaterialForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NovoOrcamento.resx">
+      <DependentUpon>NovoOrcamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OrcamentosForm.resx">
+      <DependentUpon>OrcamentosForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Master.resx">
       <DependentUpon>Master.cs</DependentUpon>
@@ -129,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109160115434_material.resx">
       <DependentUpon>202109160115434_material.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109182007158_180921.resx">
+      <DependentUpon>202109182007158_180921.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -18,26 +18,27 @@ namespace IdeareOrcamentos.Forms
         public Panel master;
         public MateriaisForm(Panel master)
         {
-            InitializeComponent();           
-            this.materiaisRepository = new MateriaisRepository(new Data.DataContext());
-            this.master = master;
+                       
+            this.materiaisRepository = new MaterialRepository(new Data.DataContext());
+            this.master = master;          
+            InitializeComponent();
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
             var materiais = materiaisRepository.GetAll().ToList();
-            foreach (var material in materiais)
-            {            
+            foreach (var material in materiais.OrderBy(a => a.Nome))
+            {
                 ListViewItem item = new ListViewItem(material.Nome);
                 item.Tag = material.ID_Material;
-                item.SubItems.Add(""+material.Fornecedor);
-                item.SubItems.Add("                 "+material.Tipo);
-                item.SubItems.Add("                 R$"+material.Valor.ToString());
-                             
+                item.SubItems.Add("" + material.Fornecedor);
+                item.SubItems.Add("                 " + material.Tipo);
+                item.SubItems.Add("                 R$" + material.Valor.ToString());
+
                 listaMateriais.Items.Add(item);
             }
 
-        }
-
-        private void listaMateriais_MouseClick(object sender, MouseEventArgs e)
-        {
-
+            base.OnShown(e);
         }
 
         private void listaMateriais_DoubleClick(object sender, EventArgs e)
@@ -67,11 +68,6 @@ namespace IdeareOrcamentos.Forms
                 materiaisRepository.Delete(id);
                 
             }
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
+        }        
     }
 }

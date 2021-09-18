@@ -26,7 +26,7 @@ namespace IdeareOrcamentos.Forms
 
         public NovoMaterialForm(Panel master, int id)
         {
-            this.materiaisRepository = new MateriaisRepository(new Data.DataContext());
+            this.materiaisRepository = new MaterialRepository(new Data.DataContext());
             this.master = master;
             this.id_material = id;
             if (id_material>0)

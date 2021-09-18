@@ -9,17 +9,17 @@ namespace IdeareOrcamentos.Repositories
 {
     public interface IMateriaisRepository
     {
-        void Create(Material materiais);
+        void Create(Material material);
         void Save();
         void Delete(int id);
         Material GetById(int id);
         IQueryable<Material> GetAll();
     }
 
-    public class MateriaisRepository : IMateriaisRepository
+    public class MaterialRepository : IMateriaisRepository
     {
         private readonly DataContext _context;
-        public MateriaisRepository(DataContext context)
+        public MaterialRepository(DataContext context)
         {
             _context = context;
         }
@@ -30,10 +30,10 @@ namespace IdeareOrcamentos.Repositories
         }
         public void Delete(int id)
         {
-            Material pessoa = _context.Materiais.Find(id);
-            if (pessoa != null)
+            Material material = _context.Materiais.Find(id);
+            if (material != null)
             {
-                _context.Materiais.Remove(pessoa);
+                _context.Materiais.Remove(material);
                 _context.SaveChanges();
             }
         }
