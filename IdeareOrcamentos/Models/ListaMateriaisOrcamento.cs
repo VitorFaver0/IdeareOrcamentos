@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace IdeareOrcamentos.Models
 {
+    [Table("ListaMateriaisOrcamentos")]
     public class ListaMateriaisOrcamento
     {
         [Key]

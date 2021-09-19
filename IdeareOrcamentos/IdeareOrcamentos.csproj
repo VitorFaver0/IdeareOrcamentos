@@ -139,6 +139,14 @@
     <Compile Include="Migrations\202109182007158_180921.designer.cs">
       <DependentUpon>202109182007158_180921.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109191937094_190921.cs" />
+    <Compile Include="Migrations\202109191937094_190921.designer.cs">
+      <DependentUpon>202109191937094_190921.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109192018125_190921_1.cs" />
+    <Compile Include="Migrations\202109192018125_190921_1.designer.cs">
+      <DependentUpon>202109192018125_190921_1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\ListaMateriaisOrcamento.cs" />
@@ -179,6 +187,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109182007158_180921.resx">
       <DependentUpon>202109182007158_180921.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109191937094_190921.resx">
+      <DependentUpon>202109191937094_190921.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109192018125_190921_1.resx">
+      <DependentUpon>202109192018125_190921_1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

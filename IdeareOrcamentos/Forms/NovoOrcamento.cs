@@ -1,4 +1,5 @@
-﻿using IdeareOrcamentos.Repositories;
+﻿using IdeareOrcamentos.Models;
+using IdeareOrcamentos.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,30 +16,51 @@ namespace IdeareOrcamentos.Forms
     {
         public Panel master;
         private IClientesRepository clientesRepository;
+        private IMateriaisRepository materiaisRepository;
 
-        public class ComboboxItem
+        public class ComboboxItemCliente
         {
             public string Text { get; set; }
-            public int Value { get; set; }
+            public Cliente Cliente { get; set; }
 
             public override string ToString()
             {
                 return Text;
             }
         }
+        public class ComboboxItemMaterial
+        {
+            public string Text { get; set; }
+            public Material Material { get; set; }
+
+            public override string ToString()
+            {
+                return Text;
+            }
+        }
+
         public NovoOrcamento(Panel master)
         {
             InitializeComponent();
             this.master = master;
             this.clientesRepository = new ClienteRepository(new Data.DataContext());
+            this.materiaisRepository = new MaterialRepository(new Data.DataContext());
 
             var clientes = clientesRepository.GetAll();
+            var materiais = materiaisRepository.GetAll();
             foreach (var cliente in clientes.OrderBy(a => a.Nome))
             {
-                ComboboxItem item = new ComboboxItem();
-                item.Value = cliente.ID_Cliente;
+                ComboboxItemCliente item = new ComboboxItemCliente();
+                item.Cliente = cliente;
                 item.Text = cliente.Nome;
                 this.listaClientes.Items.Add(item);
+            }
+            foreach (var material in materiais.OrderBy(a => a.Nome))
+            {
+                ComboboxItemMaterial item = new ComboboxItemMaterial();
+                item.Material = material;
+                item.Text = material.Nome;
+                this.listaMateriais.Items.Add(item);
             }
         }
             
@@ -49,6 +71,55 @@ namespace IdeareOrcamentos.Forms
             master.Controls.Clear();
             master.Controls.Add(novoClienteForm);
             novoClienteForm.Show();
+        }
+
+        private void addMaterial_Click(object sender, EventArgs e)
+        {
+            var material = this.listaMateriais.SelectedItem as ComboboxItemMaterial;
+            if (material != null)
+            {
+                int quantidade = 0;
+                int.TryParse(this.quantidadeMaterial.Text, out quantidade);
+                if (quantidade == 0)
+                {
+                    quantidade = 1;
+                }
+                var valorAnt = Convert.ToDecimal(this.labelValorTotal.Text);
+                this.labelValorTotal.Text = (valorAnt + (material.Material.Valor * quantidade)).ToString();
+                ListViewItem item = new ListViewItem();
+                item.Text = material.Text + "  x" + quantidade;
+                item.Tag = material.Material.ID_Material;
+                listViewMateriais.Items.Add(item);
+            }
+            
+        }
+
+        private void removerMaterialButton_Click(object sender, EventArgs e)
+        {
+            var itens = this.listViewMateriais.SelectedItems;
+            foreach (ListViewItem item in itens)
+            {
+                var material = materiaisRepository.GetById(Convert.ToInt32(item.Tag));
+                var aux = item.Text.Split('x');
+                var quantidade = Convert.ToInt32(aux[1]);
+                var valorTotal = Convert.ToDecimal(this.labelValorTotal.Text);
+                valorTotal = valorTotal - (material.Valor * quantidade);
+                this.labelValorTotal.Text = valorTotal.ToString();
+                item.Remove();
+            }
+            
+        }
+
+        private void listViewMateriais_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (this.listViewMateriais.SelectedItems.Count>0)
+            {
+                this.removerMaterialButton.Visible = true;
+            }
+            else
+            {
+                this.removerMaterialButton.Visible = false;
+            }
         }
     }
 }

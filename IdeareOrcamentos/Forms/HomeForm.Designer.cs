@@ -39,7 +39,6 @@ namespace IdeareOrcamentos.Forms
             // 
             // chart1
             // 
-            this.chart1.BackColor = System.Drawing.SystemColors.Control;
             this.chart1.BorderlineColor = System.Drawing.SystemColors.Control;
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
@@ -64,6 +63,7 @@ namespace IdeareOrcamentos.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.chart1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace IdeareOrcamentos.Models
 {
+    [Table("Orcamentos")]
     public class Orcamento
     {
         [Key]
@@ -15,7 +16,9 @@ namespace IdeareOrcamentos.Models
         public int NomeProjeto { get; set; }
         public decimal ValorProjeto { get; set; }
         public int ID_Cliente { get; set; }
-        
+        public DateTime DataCriacao { get; set; }
+        public DateTime DataEntrega { get; set; }
+
         [ForeignKey("ID_Cliente")]
         public virtual Cliente Cliente { get; set; }
 
