@@ -13,9 +13,10 @@ namespace IdeareOrcamentos.Models
     {
         [Key]
         public int ID_Orcamento { get; set; }
-        public int NomeProjeto { get; set; }
+        public string NomeProjeto { get; set; }
         public decimal ValorProjeto { get; set; }
         public int ID_Cliente { get; set; }
+        public int ValorCusto { get; set; }
         public DateTime DataCriacao { get; set; }
         public DateTime DataEntrega { get; set; }
 
